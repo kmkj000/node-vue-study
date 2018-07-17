@@ -1,8 +1,21 @@
 <template>
   <div>
+    <!-- display navibar -->
+    <app-navigation />
+    <!-- displays the page component -->
     <nuxt/>
   </div>
 </template>
+
+<script>
+import AppNavigation from '~/components/AppNavigation.vue'
+
+export default {
+  components: {
+    AppNavigation
+  }
+}
+</script>
 
 <style>
 html {

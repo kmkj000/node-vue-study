@@ -10,6 +10,14 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'study nuxt' }
     ],
     link: [
+      {
+        rel: 'stylesheet',
+        href: 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css'
+      }
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
