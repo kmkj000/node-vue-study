@@ -1,9 +1,17 @@
 <template lang="pug">
 div
   h1.red Hello {{ name }}!
-  h2#time.time {{ hour | zeroPadding }}:{{ minute }}:{{ second }}
+
+  div#timer-buttons
+    a.button.is-rounded.is-primary(v-on:click="timerStart") Start
+    a#timerStop.button.is-rounded.is-info Stop
+    a#timerReset.button.is-rounded.is-danger Reset
 
   table
+    tr
+      td.hour {{ hour }}
+      td.minute {{ minute }}
+      td.second {{ second }}
     tr(v-for="n in 10")
       td
         a.button--green(v-on:click="hour += n") +{{n}}h
@@ -42,6 +50,20 @@ module.exports = data: ->
     minute: 0,
     second: 0
   }
+
+# timerbuttons = new Vue(
+#   el: '#timer-buttons',
+#   data: name: 'Vue.js'
+#   # `methods` オブジェクトの下にメソッドを定義する
+#   methods: timerStart: (event) ->
+#     # メソッド内の `this` は、 Vue インスタンスを参照します
+#     alert('Hello !')
+#     # `event` は、ネイティブ DOM イベントです
+#     if event
+#       alert(event.target.tagName)
+#     return
+# )
+
 # new Vue (filters: {
 #     zeroPadding: (value, num) ->
 #       console.log(value)
