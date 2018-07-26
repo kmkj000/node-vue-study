@@ -1,18 +1,18 @@
 <template lang="pug">
-div
+section#app.container
   h1.red Hello {{ name }}!
 
-  div#timer-buttons
+  div#timer-buttons.timer-buuttons
     a.button.is-rounded.is-primary(v-on:click="timerStart") Start
     a#timerStop.button.is-rounded.is-info Stop
     a#timerReset.button.is-rounded.is-danger Reset
 
   table
     tr
-      td.hour {{ hour }}
-      td.minute {{ minute }}
-      td.second {{ second }}
-    tr(v-for="n in 10")
+      td#hour.time {{ hour }}
+      td#minute.time {{ minute }}
+      td#second.time {{ second }}
+    tr.plus-buttons(v-for="n in 10")
       td
         a.button--green(v-on:click="hour += n") +{{n}}h
       td
@@ -22,59 +22,104 @@ div
 </template>
 
 <script>
-// module.exports = {
-//   data: function() {
-//     return {
-//       name: 'World',
-//       hour: 0,
-//       minute: 0,
-//       second: 0
-//     };
-//   }
-// };
-// filters: {
-//   zeroPadding: function (value, num) {
-//     var num = typeof num !== 'undefined' ? num : -2;
-//     return ('0' + value).slice num;
-//   }
-// }
-</script>
+// export default {}
+// import Vue from 'vue'
 
+var data = {
+  name: 'World',
+  hour: 0,
+  minute: 0,
+  second: 0
+}
 
-<script lang="coffee">
-## data: function() { return {key: value} }
-module.exports = data: ->
-  {
+var dataReturn = function() {
+  return {
     name: 'World',
     hour: 0,
     minute: 0,
     second: 0
   }
+}
 
-# timerbuttons = new Vue(
-#   el: '#timer-buttons',
-#   data: name: 'Vue.js'
-#   # `methods` オブジェクトの下にメソッドを定義する
-#   methods: timerStart: (event) ->
-#     # メソッド内の `this` は、 Vue インスタンスを参照します
-#     alert('Hello !')
-#     # `event` は、ネイティブ DOM イベントです
-#     if event
-#       alert(event.target.tagName)
-#     return
-# )
+// export default {
+//   data: dataReturn
+// }
 
-# new Vue (filters: {
-#     zeroPadding: (value, num) ->
-#       console.log(value)
-#       num = if typeof num != 'undefined' then num else 2
-#       ('0' + value).slice num
-#   }
-# )
+// // ルート Vue インスタンス
+// new Vue({
+//     el: '#app',
+//     data: dataReturn
+// });
+
+export default {
+  asyncData (context) {
+    // コンポーネントをロードする前に毎回呼び出されます
+    return {
+      name: 'World',
+      hour: 0,
+      minute: 0,
+      second: 0
+    };
+  }
+}
+
+
+
+// export default {
+//   name: 'app',
+//   data () {
+//     return {
+//       name: 'World',
+//       hour: 0,
+//       minute: 0,
+//       second: 0
+//     }
+//   }
+//   },
+//   methods: {
+//     timerStart: function() {
+//         var time;
+//         console.dir(module.exports.data());
+//         time = {
+//           hour: module.exports.data().hour,
+//           minute: module.exports.data().minute,
+//           second: module.exports.data().second
+//         };
+//       return console.dir(this);
+//     }
+//   },
+//   computed: {
+//   }
+// }
 </script>
 
 
+
 <style lang="sass">
+.container
+  min-height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  text-align: center
+  flex-direction: column
+
+.time
+  font-size: 2em
+  font-weight: 500
+  text-align: center
+
+.timer-buuttons
+  .button
+    width: 5em
+    margin: 1em
+
+.plus-buttons
+  td
+    padding: 5px
+  a
+    width: 100%
+
 .red
   color: red
 </style>
