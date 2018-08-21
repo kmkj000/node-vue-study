@@ -1,15 +1,20 @@
 <template lang="pug">
 div#app
-  input(type="text" v-model="test")
-  p {{test}}
+  p あなたは{{ count }}回クリックしたよ
+  button(@click="test") click!
 </template>
 
 <script>
-export default {
-  data: function() {
-    return {
-      test: "ta"
+
+const vm = new Vue({
+  el: '#app',
+  data: {
+    count: 0
+  },
+  methods: {
+    test: function() {
+      this.count++
     }
   }
-}
+})
 </script>
