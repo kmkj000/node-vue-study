@@ -5,16 +5,33 @@ div#app
 </template>
 
 <script>
+// import Vue from 'vue'
+//
+// const vm = new Vue({
+//   el: '#app',
+//   data: {
+//     count: 0
+//   },
+//   methods: {
+//     test: function() {
+//       this.count++
+//     }
+//   }
+// })
 
-const vm = new Vue({
-  el: '#app',
-  data: {
-    count: 0
+export default {
+  asyncData() {
+    return {
+      count: 0
+    }
   },
   methods: {
     test: function() {
       this.count++
     }
+  },
+  head: {
+    title: 'About page'
   }
-})
+}
 </script>

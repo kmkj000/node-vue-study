@@ -45,21 +45,40 @@ var dataReturn = function() {
 //   data: dataReturn
 // }
 
-// // ルート Vue インスタンス
 // new Vue({
-//     el: '#app',
-//     data: dataReturn
-// });
-
+// 	el: '#app',
+//   // state
+//   data () {
+//     return {
+//       count: 0
+//     }
+//   },
+//   // view
+//   template: `
+//     <div>
+//       {{ count }}
+//       <input type="button" value="countUp" v-on:click="increment" />
+//     </div>
+//   `,
+//   // actions
+//   methods: {
+//     increment () {
+//       this.count++
+//     }
+//   }
+// })
 export default {
-  asyncData (context) {
+  asyncData() {
     // コンポーネントをロードする前に毎回呼び出されます
-    return {
-      name: 'World',
-      hour: 0,
-      minute: 0,
-      second: 0
-    };
+    return data
+  },
+  methods: {
+    test: function() {
+      this.count++
+    }
+  },
+  head: {
+    title: 'About page'
   }
 }
 
