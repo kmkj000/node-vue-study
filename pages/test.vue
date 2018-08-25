@@ -3,9 +3,9 @@ section#app.container
   h1.red Hello {{ name }}!
 
   div#timer-buttons.timer-buuttons
-    a.button.is-rounded.is-primary(v-on:click="timerStart") Start
-    a#timerStop.button.is-rounded.is-info Stop
-    a#timerReset.button.is-rounded.is-danger Reset
+    a.button.is-rounded.is-primary(@click="timerStart") Start
+    a#timerStop.button.is-rounded.is-info(@click="timerStop") Stop
+    a#timerReset.button.is-rounded.is-danger(@click="timerReset") Reset
 
   table
     tr
@@ -14,17 +14,14 @@ section#app.container
       td#second.time {{ second }}
     tr.plus-buttons(v-for="n in 10")
       td
-        a.button--green(v-on:click="hour += n") +{{n}}h
+        a.button--green(@click="plusHour(n)") +{{n}}h
       td
-        a.button--green(v-on:click="minute += n") +{{n}}m
+        a.button--green(@click="plusMinute(n)") +{{n}}m
       td
-        a.button--green(v-on:click="second += n") +{{n}}s
+        a.button--green(@click="plusSecond(n)") +{{n}}s
 </template>
 
 <script>
-// export default {}
-// import Vue from 'vue'
-
 var data = {
   name: 'World',
   hour: 0,
@@ -32,84 +29,43 @@ var data = {
   second: 0
 }
 
-var dataReturn = function() {
-  return {
-    name: 'World',
-    hour: 0,
-    minute: 0,
-    second: 0
-  }
-}
-
-// export default {
-//   data: dataReturn
-// }
-
-// new Vue({
-// 	el: '#app',
-//   // state
-//   data () {
-//     return {
-//       count: 0
-//     }
-//   },
-//   // view
-//   template: `
-//     <div>
-//       {{ count }}
-//       <input type="button" value="countUp" v-on:click="increment" />
-//     </div>
-//   `,
-//   // actions
-//   methods: {
-//     increment () {
-//       this.count++
-//     }
-//   }
-// })
 export default {
   asyncData() {
     // コンポーネントをロードする前に毎回呼び出されます
     return data
   },
   methods: {
-    test: function() {
-      this.count++
+    timerStart: function() {
+
+    },
+    timerStop: function() {
+
+    },
+    timerReset: function() {
+      this.hour = 0
+      this.minute = 0
+      this.second = 0
+    },
+    plusHour: function(num) {
+      this.hour += num
+    },
+    plusMinute: function(num) {
+      this.minute += num
+      // 60分処理
+      if(this.minute > 59) {
+        this.minute = 59
+      }
+    },
+    plusSecond: function(num) {
+      this.second += num
+      // 60秒処理
+      if(this.second > 59) {
+        this.second = 59
+      }
     }
-  },
-  head: {
-    title: 'About page'
   }
 }
 
-
-
-// export default {
-//   name: 'app',
-//   data () {
-//     return {
-//       name: 'World',
-//       hour: 0,
-//       minute: 0,
-//       second: 0
-//     }
-//   }
-//   },
-//   methods: {
-//     timerStart: function() {
-//         var time;
-//         console.dir(module.exports.data());
-//         time = {
-//           hour: module.exports.data().hour,
-//           minute: module.exports.data().minute,
-//           second: module.exports.data().second
-//         };
-//       return console.dir(this);
-//     }
-//   },
-//   computed: {
-//   }
-// }
 </script>
 
 

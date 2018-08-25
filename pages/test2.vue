@@ -5,20 +5,6 @@ div#app
 </template>
 
 <script>
-// import Vue from 'vue'
-//
-// const vm = new Vue({
-//   el: '#app',
-//   data: {
-//     count: 0
-//   },
-//   methods: {
-//     test: function() {
-//       this.count++
-//     }
-//   }
-// })
-
 export default {
   asyncData() {
     return {
