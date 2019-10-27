@@ -1,10 +1,15 @@
 <template lang="pug">
 section#app.container
-  h1.red Hello {{ name }}!
-
   div#timer-buttons.timer-buuttons
-    a.button.is-rounded.is-primary(@click="timerStart") Start
-    a#timerStop.button.is-rounded.is-info(@click="timerStop") Stop
+    
+    a#timerStart.button.is-rounded.is-primary(
+      @click="timerStart"
+      v-if="!isTimerStart"
+    ) Start
+    a#timerStop.button.is-rounded.is-info(
+      @click="timerStop"
+      v-if="isTimerStart"
+    ) Stop
     a#timerReset.button.is-rounded.is-danger(@click="timerReset") Reset
 
   table
@@ -22,29 +27,31 @@ section#app.container
 </template>
 
 <script>
-var data = {
-  name: 'World',
-  hour: 0,
-  minute: 0,
-  second: 0
-}
+
 
 export default {
   asyncData() {
     // コンポーネントをロードする前に毎回呼び出されます
-    return data
+    return {
+      hour: 0,
+      minute: 0,
+      second: 0,
+      isTimerStart: false
+    }
   },
   methods: {
-    timerStart: function() {
-
-    },
-    timerStop: function() {
-
-    },
     timerReset: function() {
       this.hour = 0
       this.minute = 0
       this.second = 0
+    },
+    timerStart: function() {
+      this.isTimerStart = true
+      
+    },
+    timerStop: function() {
+      this.isTimerStart = false
+
     },
     plusHour: function(num) {
       this.hour += num
@@ -62,7 +69,9 @@ export default {
       if(this.second > 59) {
         this.second = 59
       }
-    }
+    },
+  },
+  computed: {
   }
 }
 

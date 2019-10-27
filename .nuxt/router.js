@@ -3,9 +3,10 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const _a3d3f42e = () => import('../pages/test2.vue' /* webpackChunkName: "pages/test2" */).then(m => m.default || m)
-const _57df12ce = () => import('../pages/test.vue' /* webpackChunkName: "pages/test" */).then(m => m.default || m)
-const _7257d04a = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
+const _d88ed18a = () => import('../pages/hello-nuxt.vue' /* webpackChunkName: "pages/hello-nuxt" */).then(m => m.default || m)
+const _b228f322 = () => import('../pages/test.vue' /* webpackChunkName: "pages/test" */).then(m => m.default || m)
+const _369cf0d3 = () => import('../pages/test2.vue' /* webpackChunkName: "pages/test2" */).then(m => m.default || m)
+const _4f5b02c5 = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 
 
 
@@ -66,18 +67,23 @@ export function createRouter () {
     scrollBehavior,
     routes: [
 		{
-			path: "/test2",
-			component: _a3d3f42e,
-			name: "test2"
+			path: "/hello-nuxt",
+			component: _d88ed18a,
+			name: "hello-nuxt"
 		},
 		{
 			path: "/test",
-			component: _57df12ce,
+			component: _b228f322,
 			name: "test"
 		},
 		{
+			path: "/test2",
+			component: _369cf0d3,
+			name: "test2"
+		},
+		{
 			path: "/",
-			component: _7257d04a,
+			component: _4f5b02c5,
 			name: "index"
 		}
     ],

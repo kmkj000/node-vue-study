@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- display navibar -->
-    <app-navigation />
+    <!-- <app-navigation /> -->
     <!-- displays the page component -->
     <nuxt/>
   </div>
